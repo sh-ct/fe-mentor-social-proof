@@ -1,20 +1,52 @@
 /* 1. Use a more-intuitive box-sizing model. */
-*, *::before, *::after {box-sizing: border-box;}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
 /* 2. Remove default margin */
-* {margin: 0;}
+* {
+  margin: 0;
+}
 /* 3. Allow percentage-based heights in the application */
-html, body {height: 100%;}
+html,
+body {
+  height: 100%;
+}
 /* Typographic tweaks! Add accessible line-height & Improve text rendering */
-body {line-height: 1.5; -webkit-font-smoothing: antialiased;}
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
 /* 6. Improve media defaults */
-img, picture, video, canvas, svg {display: block; max-width: 100%;}
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
 /* 7. Remove built-in form typography styles */
-input, button, textarea, select {font: inherit;}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
 /* 8. Avoid text overflows */
-p, h1, h2, h3, h4, h5, h6 {overflow-wrap: break-word;}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
 
 /* Variables */
-$ff-body: 'League Spartan', sans-serif;
+$ff-body: "League Spartan", sans-serif;
 $fw-light: 400;
 $fw-body: 500;
 $fw-bold: 700;
@@ -25,3 +57,93 @@ $clr-magenta-300: hsl(303, 10%, 53%);
 $clr-magenta-100: hsl(300, 24%, 96%);
 $clr-pink: hsl(333, 80%, 67%);
 $clr-white: hsl(0, 0%, 100%);
+
+/* Main Styles */
+body {
+    font-size: $fs-body;
+    font-family: $ff-body;
+    font-weight: $fw-body;
+    text-align: left;
+    color: $clr-magenta-800;
+    background-image: url("../images/bg-pattern-top-desktop.svg"), url("../images/bg-pattern-bottom-desktop.svg");
+    background-repeat: no-repeat, no-repeat;
+    padding: 10rem;
+}
+
+main {
+  height: 100%;
+  flex-wrap: wrap;
+}
+
+.flex-group {
+    display: flex;
+    align-items: center;
+}
+
+.intro {
+  flex-basis: 50%;
+  padding-inline-end:9rem;
+
+  &__heading {
+    font-weight: $fw-bold;
+    font-size: 3rem;
+    line-height: 0.85;
+    padding-block-end: 1rem;
+  }
+}
+
+.tests {
+  flex-basis: 100%;
+  background-color: red;
+  gap: 1rem;
+}
+
+.ratings {
+  flex-basis: 50%;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.card {
+  border-radius: 0.5rem;
+  height: 90%;
+
+  &--align-start {
+    align-self: flex-start;
+  }
+
+  &--align-end {
+    align-self: flex-end;
+  }
+
+  &--rating {
+    background-color: $clr-magenta-100;
+    width: 90%;
+    &__stars {
+    }
+  }
+
+  &--test {
+    background-color: $clr-magenta-800;
+    color: $clr-white;
+    &__header {
+    }
+
+    &__image {
+        clear: both;
+        float: left;
+        border-radius: 50%;
+    }
+
+    &__text {
+        color: $clr-pink;
+
+      &::first-line {
+        color: $clr-white;
+      }
+    }
+
+    &__content {
+    }
+  }
+}

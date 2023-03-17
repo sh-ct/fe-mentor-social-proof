@@ -11,7 +11,7 @@
 /* 3. Allow percentage-based heights in the application */
 html,
 body {
-  height: 100%;
+  // height: 100%;
 }
 /* Typographic tweaks! Add accessible line-height & Improve text rendering */
 body {
@@ -63,16 +63,21 @@ body {
     font-size: $fs-body;
     font-family: $ff-body;
     font-weight: $fw-body;
-    text-align: left;
+    text-align: center;
     color: $clr-magenta-800;
-    background-image: url("../images/bg-pattern-top-desktop.svg"), url("../images/bg-pattern-bottom-desktop.svg");
+    background-image: url("../images/bg-pattern-top-mobile.svg"), url("../images/bg-pattern-bottom-mobile.svg");
     background-repeat: no-repeat, no-repeat;
-    padding: 10rem;
+    padding: 5rem 1.5rem;
 }
 
 main {
-  height: 100%;
   flex-wrap: wrap;
+  gap: 2.5rem;
+  height: 100%;
+}
+
+section {
+  width: 100%;
 }
 
 .flex-group {
@@ -81,25 +86,23 @@ main {
 }
 
 .intro {
-  flex-basis: 50%;
-  padding-inline-end:9rem;
+  font-size: 1.125rem;
 
   &__heading {
     font-weight: $fw-bold;
-    font-size: 3rem;
+    font-size: 2.5rem;
     line-height: 0.85;
-    padding-block-end: 1rem;
+    padding-block-end: 1.5rem;
   }
 }
 
 .tests {
   flex-basis: 100%;
-  background-color: red;
   gap: 1rem;
+  flex-direction: column;
 }
 
 .ratings {
-  flex-basis: 50%;
     flex-direction: column;
     gap: 0.75rem;
 }
@@ -118,21 +121,41 @@ main {
 
   &--rating {
     background-color: $clr-magenta-100;
-    width: 90%;
-    &__stars {
+    width: 100%;
+    padding: 1rem 2rem;
+    align-items: center;
+    line-height: 1;
+    font-weight: $fw-bold;
+    font-size: 1rem;
+
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 0.75rem;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      width: calc(17px * 5.99);
+      height: 16px;
+      background-image: url("../images/icon-star.svg");
+      background-repeat: space;
     }
   }
 
   &--test {
     background-color: $clr-magenta-800;
     color: $clr-white;
+    padding: 1.5rem;
+    text-align: left;
+
     &__header {
+      gap: 1rem;
     }
 
     &__image {
-        clear: both;
-        float: left;
         border-radius: 50%;
+        transform: scale(0.6, 0.6);
     }
 
     &__text {
@@ -143,7 +166,59 @@ main {
       }
     }
 
-    &__content {
+  }
+}
+
+@media (min-width: 600px) {
+  body {
+    text-align: left;
+    padding: 8rem;
+    padding-bottom: 0rem;
+  }
+
+  main {
+    gap: 2.5rem;
+    align-items: flex-start;
+  }
+
+  .flex-group {
+    align-items: flex-start;
+  }
+
+  .intro {
+    flex-basis: 48%;
+    padding-inline-end: 6rem;
+
+    &__heading {
+      font-size: 3.5rem;
     }
   }
+
+  .ratings {
+    flex-basis: 48%;
+    align-items: center;
+  }
+
+  .tests {
+    flex-direction: row;
+    align-items: center;
+    height: 18rem;
+    gap: 2rem;
+  }
+
+  .card {
+    &--rating {
+      width: 75%;
+      flex-wrap: nowrap;
+      flex-direction: row;
+      padding: 1.5rem 2rem;
+      font-size: 1rem;
+      gap: 2rem;
+    }
+
+    &--test {
+      height: 80%;
+    }
+  }
+
 }
